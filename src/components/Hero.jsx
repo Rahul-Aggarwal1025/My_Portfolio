@@ -27,14 +27,14 @@ function Hero() {
     
     const script = [
       { action: "wait", ms: 1200 },
-      { action: "type", text: "df.descirbe()" }, // Intentional spelling typo
+      { action: "type", text: "df.escribe()" }, // Intentional spelling typo
       { action: "wait", ms: 800 },
-      { action: "error", text: "AttributeError: 'DataFrame' object has no attribute 'descirbe'." },
+      { action: "error", text: "AttributeError: 'DataFrame' object has no attribute 'escribe'." },
       { action: "wait", ms: 500 },
-      { action: "error", text: "AttributeError: 'DataFrame' object has no attribute 'descirbe'.\nDid you mean: 'describe'?" },
+      { action: "error", text: "AttributeError: 'DataFrame' object has no attribute 'escribe'.\nDid you mean: 'describe'?" },
       { action: "wait", ms: 3000 },
       { action: "clear-error" },
-      { action: "backspace", count: 10 }, // Erases "descirbe()" leaving "df."
+      { action: "backspace", count: 9 }, // Erases "escribe()" leaving "df."
       { action: "wait", ms: 750 },
       { action: "type", text: "describe()" }, // Run it correctly!
       { action: "wait", ms: 900 },
@@ -209,7 +209,7 @@ function Hero() {
                 "NLP & text mining",<br />
                 "fintech & markets",<br />
                 "human behavior in data",<br />
-                "products that make sense"
+                "Designing and Editing"
               </div>
               <div style={{ color: "#a29bfe", fontWeight: "600" }}>]</div>
             </div>

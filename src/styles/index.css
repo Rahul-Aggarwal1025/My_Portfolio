@@ -244,3 +244,10 @@ a {
     padding: 80px 16px;
   }
 }
+
+/* Custom Cursor — hide native pointer on desktop */
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+

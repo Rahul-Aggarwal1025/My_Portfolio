@@ -7,6 +7,7 @@ import Experience from './components/Experience'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import { ProjectPage } from './components/ProjectPage'
+import PageDecorator from './components/PageDecorator'
 
 function App() {
   const [activeProject, setActiveProject] = useState(null);
@@ -32,15 +33,19 @@ function App() {
   // When a project is open, show only its detail page (no navbar/hero)
   if (activeProject !== null) {
     return (
-      <ProjectPage
-        projectId={activeProject}
-        onBack={handleBack}
-      />
+      <>
+        <PageDecorator />
+        <ProjectPage
+          projectId={activeProject}
+          onBack={handleBack}
+        />
+      </>
     );
   }
 
   return (
     <>
+      <PageDecorator />
       <Navbar />
       <Hero />
       <CreativeBridge />
