@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
-import deiImg from "../assets/dei_internship.png";
-import datascienceImg from "../assets/datascience_internship.png";
+import plakshaLogo from "../assets/plaksha_logo.png";
+import leoLogo from "../assets/leo_logo.png";
 
 const experiences = [
   {
     id: 1,
-    image: deiImg,
+    image: plakshaLogo,
     tag: "Internship #01 · Policy",
     date: "Summer 2024 · 3 mos",
     title: "Diversity, Equity & Inclusion Policy Intern",
-    company: "Morung Express DEI Lab",
+    company: "Plaksha University DEI Lab",
     description: "Processed stakeholder data, turning complex multi-source inputs into structured insights. Authored a 20-page DEI Impact Report: the kind of work where you refine spreadsheet analysis into a publication-ready corporate standard.",
     chips: ["Stakeholder Data", "DEI Impact Report", "Oxford Comma Debates ✍️", "Caffeine Overdrive ☕"],
     status: "🚀 COFFEE_LEVEL: 100% CONCENTRATE",
@@ -21,11 +21,11 @@ const experiences = [
   },
   {
     id: 2,
-    image: datascienceImg,
+    image: leoLogo,
     tag: "Research #02 · Applied NLP",
     date: "Fall 2024 · 4 mos",
     title: "Applied NLP & Social Impact Researcher",
-    company: "Data Science & Economic Behaviour (DSEB) Lab",
+    company: "LEO Lab (Data Science & Economic Behaviour)",
     description: "Conducted applied NLP research on public perception, scraping large-scale review data and extracting structured insights from unstructured text datasets to model online consumer behavior.",
     chips: ["NLP Research", "Data Scraping", "Sentiment Analysis", "Cat Classifier 🐱", "VRAM Allocation 💾"],
     status: "⏳ STAGE: QUEUED (Awaiting H100 GPU allocation from the Lab Gods)",
@@ -40,6 +40,7 @@ const experiences = [
 function ExperienceCard({ exp, index, onActive, isMobile }) {
   const cardRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const currentRef = cardRef.current;
@@ -151,23 +152,29 @@ function ExperienceCard({ exp, index, onActive, isMobile }) {
       {/* Frosted Glassmorphic Folio Plate Card with elegant slide, scale & blur entrance */}
       <div
         className="experience-folio-plate"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           border: "1px solid rgba(255, 255, 255, 0.55)",
           borderRadius: "24px",
           padding: isMobile ? "24px" : "36px",
-          background: "rgba(255, 255, 255, 0.45)",
+          background: isHovered ? "rgba(255, 255, 255, 0.6)" : "rgba(255, 255, 255, 0.45)",
           backdropFilter: "blur(18px)",
           WebkitBackdropFilter: "blur(18px)",
-          boxShadow: "0 24px 64px rgba(29, 34, 46, 0.03), inset 0 1px 0 rgba(255,255,255,1)",
+          boxShadow: isHovered 
+            ? "0 32px 80px rgba(29, 34, 46, 0.08), inset 0 1px 0 rgba(255,255,255,1)" 
+            : "0 24px 64px rgba(29, 34, 46, 0.03), inset 0 1px 0 rgba(255,255,255,1)",
           display: "flex",
           flexDirection: isMobile ? "column" : (isEven ? "row" : "row-reverse"),
           gap: isMobile ? "24px" : "36px",
           alignItems: "center",
-          transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, filter 0.8s ease, opacity 0.8s ease, background-color 0.4s ease",
+          transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, filter 0.6s ease, opacity 0.6s ease, background-color 0.4s ease",
           position: "relative",
           overflow: "hidden",
-          // One-time scroll animations
-          transform: isInView ? "scale(1) translateY(0)" : "scale(0.96) translateY(45px)",
+          // One-time scroll + hover animations
+          transform: isInView 
+            ? (isHovered ? "scale(1.01) translateY(-4px)" : "scale(1) translateY(0)") 
+            : "scale(0.96) translateY(45px)",
           filter: isInView ? "none" : "blur(6px)",
           opacity: isInView ? 1 : 0,
         }}
@@ -268,11 +275,13 @@ function ExperienceCard({ exp, index, onActive, isMobile }) {
                 src={exp.image}
                 alt={exp.title}
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "130px",
+                  maxWidth: "92%",
+                  maxHeight: exp.id === 1 ? "95px" : "125px",
                   objectFit: "contain",
-                  filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.05))",
+                  filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.04))",
                   zIndex: 1,
+                  transform: isHovered ? "scale(1.1)" : "scale(1.02)",
+                  transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
                 className="blueprint-img"
               />
