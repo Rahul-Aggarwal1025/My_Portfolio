@@ -1187,6 +1187,97 @@ function Hero() {
 
       </div>
 
+      {/* Floating Centered Slanting Live Ribbon */}
+      <div style={{
+        width: "60%", // Keep 60% of the original width
+        minWidth: "290px", // Responsive lower bound
+        maxWidth: "720px", // Cozy upper bound
+        margin: "35px auto 20px auto", // Centered horizontally with top/bottom padding
+        overflow: "hidden",
+        transform: "rotate(-2.2deg)", // Beautiful matching rotation slant
+        background: "#fdcb6e", // Warm gold brand accent
+        border: "2px solid #1D222E", // Full black border outline
+        borderRadius: "8px", // Rounded corner tape/sticker look
+        boxShadow: "4px 4px 0px #1D222E", // Flat neo-brutalist shadow
+        padding: "10px 0",
+        zIndex: 5,
+        position: "relative",
+        display: "flex",
+        alignItems: "center"
+      }}>
+        {/* Soft edge fade overlays to dissolve text near ribbon corners */}
+        <div style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: "60px",
+          background: "linear-gradient(to right, #fdcb6e 20%, transparent 100%)",
+          zIndex: 2,
+          pointerEvents: "none"
+        }} />
+        <div style={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: "60px",
+          background: "linear-gradient(to left, #fdcb6e 20%, transparent 100%)",
+          zIndex: 2,
+          pointerEvents: "none"
+        }} />
+
+        {/* Scrolling Track */}
+        <div style={{
+          display: "flex",
+          width: "max-content",
+          animation: "ribbonScroll 25s linear infinite",
+          whiteSpace: "nowrap"
+        }}>
+          {/* Two identical blocks map to ensure mathematically seamless loop */}
+          {Array.from({ length: 2 }).map((_, blockIdx) => (
+            <div 
+              key={blockIdx}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "50px",
+                paddingRight: "50px"
+              }}
+            >
+              {/* Render 2 copies of the sentence inside each block */}
+              {[1, 2].map((itemIdx) => (
+                <div key={itemIdx} style={{ display: "flex", alignItems: "center", gap: "50px" }}>
+                  <span style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    fontWeight: "900",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                    background: "linear-gradient(90deg, #1D222E 0%, #6c5ce7 35%, #ff7675 65%, #1D222E 100%)",
+                    backgroundSize: "200% 100%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    animation: "flow-gradient 6s linear infinite"
+                  }}>
+                    Currently studying Data Science, Economics & Business
+                  </span>
+                  
+                  {/* Flat neo-brutalist coral bullet separating sentences */}
+                  <div style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "#ff7675",
+                    border: "1.5px solid #1D222E"
+                  }} />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Smooth Card Swaying, Floating Icons, & Continuous Linear Gradient Flow Keyframes */}
       <style>{`
         @keyframes swing {
@@ -1223,6 +1314,10 @@ function Hero() {
         @keyframes spin-slow {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
+        }
+        @keyframes ribbonScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </section>
