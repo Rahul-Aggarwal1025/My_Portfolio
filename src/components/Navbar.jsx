@@ -8,6 +8,13 @@ function Navbar() {
     { label: "Experience", href: "#experience" }
   ];
 
+  const handleNavClick = (e, href) => {
+    if (href === "#home") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav style={{
       position: "fixed",
@@ -33,9 +40,10 @@ function Navbar() {
         gap: "36px"
       }}>
         {menuItems.map((item, idx) => (
-          <a 
-            key={idx} 
-            href={item.href} 
+          <a
+            key={idx}
+            href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "15px",
@@ -52,11 +60,11 @@ function Navbar() {
             {item.label}
           </a>
         ))}
-        
+
         {/* Specially Highlighted Resume Button */}
-        <a 
-          href={resumePdf} 
-          target="_blank" 
+        <a
+          href={resumePdf}
+          target="_blank"
           rel="noopener noreferrer"
           style={{
             fontFamily: "'Outfit', sans-serif",

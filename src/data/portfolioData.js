@@ -12,7 +12,7 @@ export const portfolioData = {
       resume: "#"
     }
   },
-  
+
   stats: [
     { label: "Years Experience", value: "6+" },
     { label: "Completed Projects", value: "48+" },
@@ -23,7 +23,7 @@ export const portfolioData = {
   about: {
     bio: "I am a full-stack engineer and digital architect specializing in high-performance web applications, interactive web interfaces, and distributed system architectures. With over 6 years of experience, I bridge the gap between creative visual designs and rock-solid software engineering. My mission is to engineer web solutions that are not only blazingly fast and structurally sound, but also visually captivating and deeply engaging.",
     philosophy: "I believe software development is a form of digital craftsmanship. Excellence requires robust engineering standards, extreme performance optimization, and deep empathy for the user's micro-interactions. Every line of code should have a purpose, and every interface should feel alive.",
-    
+
     // Recharts Data structure for specialized engineering dimensions (Radar Chart)
     radarStats: [
       { subject: 'Frontend Systems', A: 95, B: 90, fullMark: 100 },

@@ -24,7 +24,7 @@ function Hero() {
   // Intentional funny backspace typing state machine
   useEffect(() => {
     let isCancelled = false;
-    
+
     const script = [
       { action: "wait", ms: 1200 },
       { action: "type", text: "df.escribe()" }, // Intentional spelling typo
@@ -54,14 +54,14 @@ function Hero() {
 
         for (const step of script) {
           if (isCancelled) break;
-          
+
           if (step.action === "type") {
             for (let i = 0; i < step.text.length; i++) {
               if (isCancelled) break;
               setTypedCommand(prev => prev + step.text[i]);
               await new Promise(r => setTimeout(r, 65 + Math.random() * 45)); // Natural variable typing cadence
             }
-          } 
+          }
           else if (step.action === "backspace") {
             for (let i = 0; i < step.count; i++) {
               if (isCancelled) break;
@@ -90,7 +90,7 @@ function Hero() {
   }, []);
 
   return (
-    <section style={{
+    <section id="home" className="hero-section" style={{
       minHeight: "100vh",
       background: "#FAF6EE", // Premium warm cream color
       display: "flex",
@@ -110,7 +110,7 @@ function Hero() {
         pointerEvents: "none",
         zIndex: 0
       }} />
-      
+
       {/* Soft elegant grid pattern overlay */}
       <div style={{
         position: "absolute",
@@ -122,7 +122,7 @@ function Hero() {
       }} />
 
       {/* Outer Responsive Row Stage surrounding the ID card with supplementary widgets */}
-      <div style={{
+      <div className="hero-stage" style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -134,9 +134,9 @@ function Hero() {
         marginTop: "30px",
         zIndex: 5
       }}>
-        
+
         {/* Left Side: Tiny Terminal Snippet Card Column */}
-        <div style={{
+        <div className="hero-left-col" style={{
           flex: "1",
           minWidth: "270px",
           maxWidth: "295px",
@@ -169,15 +169,15 @@ function Hero() {
               <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#ffbd2e" }} />
               <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#27c93f" }} />
             </div>
-            
+
             {/* Terminal input stream */}
             <div style={{ display: "flex", alignItems: "center", color: "#74b9ff", fontWeight: "600" }}>
               <span>&gt;&gt;&gt;&nbsp;</span>
               <span>{typedCommand}</span>
-              <span style={{ 
-                width: "6px", 
-                height: "14px", 
-                background: "#74b9ff", 
+              <span style={{
+                width: "6px",
+                height: "14px",
+                background: "#74b9ff",
                 marginLeft: "2px",
                 animation: "blink 1s step-end infinite"
               }} />
@@ -185,10 +185,10 @@ function Hero() {
 
             {/* Intentionally Funny Typo Error message */}
             {terminalError && (
-              <div style={{ 
-                color: "#ff7675", 
-                fontSize: "11px", 
-                marginTop: "8px", 
+              <div style={{
+                color: "#ff7675",
+                fontSize: "11px",
+                marginTop: "8px",
                 whiteSpace: "pre-line",
                 fontFamily: "var(--font-mono)",
                 lineHeight: "1.4"
@@ -216,7 +216,8 @@ function Hero() {
           </div>
 
           {/* Floating LinkedIn Icon (Below Debug Card) */}
-          <a 
+          <a
+            className="hero-linkedin-wrapper"
             href="https://www.linkedin.com/in/rahul-aggarwal-28a281321/"
             target="_blank"
             rel="noopener noreferrer"
@@ -239,21 +240,21 @@ function Hero() {
               e.currentTarget.style.filter = "drop-shadow(0 0 16px rgba(0, 119, 181, 0.45))"; // Keep permanent default glow
             }}
           >
-            <img 
-              src={lkIcon} 
-              alt="LinkedIn" 
-              style={{ 
-                width: "80px", 
-                height: "80px", 
+            <img
+              src={lkIcon}
+              alt="LinkedIn"
+              style={{
+                width: "80px",
+                height: "80px",
                 objectFit: "contain",
                 display: "block"
-              }} 
+              }}
             />
           </a>
         </div>
 
         {/* Center: ID Card and Hanger wrapper */}
-        <div style={{
+        <div className="hero-center-col" style={{
           position: "relative",
           display: "flex",
           flexDirection: "column",
@@ -288,7 +289,7 @@ function Hero() {
 
 
           {/* Swinging Card Panel */}
-          <div 
+          <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
@@ -303,11 +304,11 @@ function Hero() {
           >
 
             {/* Straight Lanyard Strap matching the uploaded design (Perfect 80px size) */}
-            <svg 
-              width="40" 
-              height="80" 
-              viewBox="0 0 40 80" 
-              fill="none" 
+            <svg
+              width="40"
+              height="80"
+              viewBox="0 0 40 80"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
               style={{
                 display: "block",
@@ -318,15 +319,15 @@ function Hero() {
             >
               {/* Strap Base (Dark Navy) */}
               <rect x="9" y="0" width="22" height="50" fill="#131924" rx="1.5" />
-              
+
               {/* Diagonal Stripes (Teal, Sky Blue, White) */}
               <path d="M9 12 L31 24 L31 30 L9 18 Z" fill="#00cec9" />
               <path d="M9 18 L31 30 L31 36 L9 24 Z" fill="#90caf9" />
               <path d="M9 24 L31 36 L31 42 L9 30 Z" fill="#ffffff" />
-              
+
               {/* Metal Ring */}
               <circle cx="20" cy="58" r="9" stroke="#2d3748" strokeWidth="2.5" fill="none" />
-              
+
               {/* Lobster Clasp */}
               <rect x="16" y="66" width="8" height="5" rx="1.5" fill="#4a5568" />
               <path d="M15,71 C15,71 13,77 17,81 C19,83 21,83 23,81 C27,77 25,71 25,71 L23,71 C23,74 24,78 21,79 C20,80 20,80 19,79 C16,78 17,74 17,71 Z" fill="#2d3748" />
@@ -334,7 +335,7 @@ function Hero() {
             </svg>
 
             {/* Premium ID Card matching the reference wave layout, maximized for photo real-estate */}
-            <div style={{
+            <div className="hero-id-card" style={{
               width: "290px",
               height: "460px", // Shortened to remove dead space below name/tagline
               background: "#ffffff",
@@ -360,11 +361,11 @@ function Hero() {
                 border: "1px solid rgba(0, 0, 0, 0.08)",
                 zIndex: 10
               }} />
-              
+
               {/* Layered Wavy Diagonal SVGs on Top Block */}
-              <svg 
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "200px", zIndex: 1 }} 
-                viewBox="0 0 300 200" 
+              <svg
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "200px", zIndex: 1 }}
+                viewBox="0 0 300 200"
                 preserveAspectRatio="none"
               >
                 {/* Swoosh 3 (Deep Ocean Blue back layer) */}
@@ -376,7 +377,7 @@ function Hero() {
               </svg>
 
               {/* Maximized Portrait Photo Container with hover transition */}
-              <div style={{
+              <div className="hero-portrait-box" style={{
                 position: "relative",
                 zIndex: 4,
                 marginTop: "30px", // Slips up inside the dark wave due to logo removal
@@ -400,13 +401,13 @@ function Hero() {
                   position: "relative"
                 }}>
                   {/* Slide 1: avatar.png (Visible by default) */}
-                  <img 
-                    src={avatar} 
-                    alt="Rahul Aggarwal Slide 1" 
-                    style={{ 
-                      width: "100%", 
-                      height: "100%", 
-                      objectFit: "cover", 
+                  <img
+                    src={avatar}
+                    alt="Rahul Aggarwal Slide 1"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
                       objectPosition: "center top", // Crop bottom safely, keep head in focus
                       position: "absolute",
                       top: 0,
@@ -415,13 +416,13 @@ function Hero() {
                     }}
                   />
                   {/* Slide 2: avatar2.png (Visible on hover) */}
-                  <img 
-                    src={avatar2} 
-                    alt="Rahul Aggarwal Slide 2" 
-                    style={{ 
-                      width: "100%", 
-                      height: "100%", 
-                      objectFit: "cover", 
+                  <img
+                    src={avatar2}
+                    alt="Rahul Aggarwal Slide 2"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
                       objectPosition: "center top", // Crop bottom safely, keep head in focus
                       position: "absolute",
                       top: 0,
@@ -459,7 +460,7 @@ function Hero() {
                 }}>
                   Rahul Aggarwal
                 </div>
-                
+
                 {/* Enlarged Title Tagline with "Scientist" in quotes */}
                 <div style={{
                   fontSize: "15px",
@@ -478,7 +479,7 @@ function Hero() {
         </div>
 
         {/* Right Side: QR Code Card Column */}
-        <div style={{
+        <div className="hero-right-col" style={{
           flex: "1",
           minWidth: "160px",
           maxWidth: "185px",
@@ -488,7 +489,7 @@ function Hero() {
           gap: "25px"
         }}>
           {/* QR Code Card leading to documents folder */}
-          <a 
+          <a
             href="https://drive.google.com/drive/folders/1-DKzXdJtBB0JqcTNhFhv4bbE-7whR50h?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
@@ -517,24 +518,24 @@ function Hero() {
           >
             {/* High-Fidelity Dense Vector QR Code Container */}
             <div style={{
-                background: "#ffffff",
-                padding: "8px",
-                borderRadius: "12px",
-                boxShadow: "inset 0 1px 3px rgba(0,0,0,0.05)",
-                border: "1px solid rgba(0,0,0,0.04)"
-              }}>
-                <img 
-                  src={qrCode} 
-                  alt="Documents QR Code" 
-                  style={{ 
-                    width: "115px", 
-                     height: "115px", 
-                     display: "block",
-                     imageRendering: "pixelated"
-                  }} 
-                />
-              </div>
-            
+              background: "#ffffff",
+              padding: "8px",
+              borderRadius: "12px",
+              boxShadow: "inset 0 1px 3px rgba(0,0,0,0.05)",
+              border: "1px solid rgba(0,0,0,0.04)"
+            }}>
+              <img
+                src={qrCode}
+                alt="Documents QR Code"
+                style={{
+                  width: "115px",
+                  height: "115px",
+                  display: "block",
+                  imageRendering: "pixelated"
+                }}
+              />
+            </div>
+
             <div style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "12px",
@@ -550,7 +551,8 @@ function Hero() {
           </a>
 
           {/* Floating Mail Icon (Below QR Card) with instant Click-to-Copy interaction */}
-          <div 
+          <div
+            className="hero-mail-wrapper"
             onClick={handleCopyMail}
             onMouseEnter={() => setShowMailTooltip(true)}
             onMouseLeave={() => {
@@ -568,7 +570,7 @@ function Hero() {
               marginTop: "135px" // Pushed significantly more down to break horizontal alignment
             }}
           >
-            <div 
+            <div
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -584,15 +586,15 @@ function Hero() {
                 e.currentTarget.style.filter = "drop-shadow(0 0 16px rgba(225, 112, 85, 0.45))"; // Keep permanent default glow
               }}
             >
-              <img 
-                src={mailIcon} 
-                alt="Email" 
-                style={{ 
-                  width: "80px", 
-                  height: "80px", 
+              <img
+                src={mailIcon}
+                alt="Email"
+                style={{
+                  width: "80px",
+                  height: "80px",
                   objectFit: "contain",
                   display: "block"
-                }} 
+                }}
               />
             </div>
 
@@ -645,7 +647,7 @@ function Hero() {
       </div>
 
       {/* Row 2: Four Supplementary Info Cards Grid */}
-      <div style={{
+      <div className="hero-row2-grid" style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "stretch",
@@ -661,7 +663,8 @@ function Hero() {
 
 
         {/* Card 3 — Home */}
-        <div 
+        <div
+          className="hero-card-coords"
           style={{
             flex: "1.2",
             minWidth: "260px",
@@ -690,13 +693,13 @@ function Hero() {
           <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
               <div>
-                <span style={{ 
-                  background: "#00cec9", 
-                  color: "#1D222E", 
-                  fontSize: "9.5px", 
-                  fontWeight: "900", 
-                  padding: "4px 10px", 
-                  borderRadius: "8px", 
+                <span style={{
+                  background: "#00cec9",
+                  color: "#1D222E",
+                  fontSize: "9.5px",
+                  fontWeight: "900",
+                  padding: "4px 10px",
+                  borderRadius: "8px",
                   border: "2px solid #1D222E", // Nested neo-brutalist coordinate badge
                   textTransform: "uppercase",
                   letterSpacing: "0.8px",
@@ -708,38 +711,38 @@ function Hero() {
                   31.1048° N &middot; 77.1734° E
                 </div>
               </div>
-              
+
               {/* Spinning vector compass in small circular light block */}
-              <div style={{ 
-                width: "42px", 
-                height: "42px", 
-                borderRadius: "50%", 
+              <div style={{
+                width: "42px",
+                height: "42px",
+                borderRadius: "50%",
                 background: "#FAF6EE", // Light cream background matching page theme
                 border: "3px solid #1D222E", // Thick Neo-Brutalist outline
-                display: "flex", 
-                alignItems: "center", 
+                display: "flex",
+                alignItems: "center",
                 justifyContent: "center",
                 boxShadow: "2px 2px 0px #1D222E", // Solid carbon shadow
                 flexShrink: 0
               }}>
-                <svg 
-                  width="28" 
-                  height="28" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   style={{ animation: "spin-slow 15s linear infinite" }}
                 >
                   {/* Dial Tick Marks */}
                   <circle cx="12" cy="12" r="10" stroke="#1D222E" strokeWidth="1" strokeDasharray="2 2" opacity="0.15" />
                   <circle cx="12" cy="12" r="8" stroke="#1D222E" strokeWidth="0.75" opacity="0.08" />
-                  
+
                   {/* Cardinal Tick Lines */}
                   <line x1="12" y1="2" x2="12" y2="4" stroke="#1D222E" strokeWidth="1.5" />
                   <line x1="12" y1="20" x2="12" y2="22" stroke="#1D222E" strokeWidth="1" opacity="0.5" />
                   <line x1="2" y1="12" x2="4" y2="12" stroke="#1D222E" strokeWidth="1" opacity="0.5" />
                   <line x1="20" y1="12" x2="22" y2="12" stroke="#1D222E" strokeWidth="1" opacity="0.5" />
-                  
+
                   {/* Diagonal subtle ticks */}
                   <line x1="5" y1="5" x2="6.5" y2="6.5" stroke="#1D222E" strokeWidth="0.75" opacity="0.25" />
                   <line x1="19" y1="5" x2="17.5" y2="6.5" stroke="#1D222E" strokeWidth="0.75" opacity="0.25" />
@@ -753,7 +756,7 @@ function Hero() {
                   {/* North Needle Pointing North (Vibrant Glowing Cyan Fill) */}
                   <path d="M12 4.5 L14.5 12 L12 10.5 Z" fill="#00cec9" stroke="#1D222E" strokeWidth="1" strokeLinejoin="round" />
                   <path d="M12 4.5 L9.5 12 L12 10.5 Z" fill="rgba(0, 206, 201, 0.5)" stroke="#1D222E" strokeWidth="1" strokeLinejoin="round" />
-                  
+
                   {/* South Needle Pointing South (Clean Light-Themed White/Gray Fill) */}
                   <path d="M12 19.5 L14.5 12 L12 13.5 Z" fill="#ffffff" stroke="#1D222E" strokeWidth="1" strokeLinejoin="round" />
                   <path d="M12 19.5 L9.5 12 L12 13.5 Z" fill="#f0f2f5" stroke="#1D222E" strokeWidth="1" strokeLinejoin="round" />
@@ -838,7 +841,8 @@ function Hero() {
         </div>
 
         {/* Card 4 — Education */}
-        <div 
+        <div
+          className="hero-card-academics"
           style={{
             flex: "1.5",
             minWidth: "300px",
@@ -863,7 +867,7 @@ function Hero() {
           }}
         >
           {/* Flat 3D Shadow Layer (Clipped at Top-Right Corner) */}
-          <div 
+          <div
             className="neo-shadow-edu"
             style={{
               position: "absolute",
@@ -876,7 +880,7 @@ function Hero() {
               clipPath: "polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%)",
               transition: "transform 0.2s ease",
               zIndex: 1
-            }} 
+            }}
           />
 
           {/* Ruled Paper Body (Clipped at Top-Right Corner) */}
@@ -981,7 +985,7 @@ function Hero() {
           </svg>
 
           {/* Inner Content Wrapper */}
-          <div style={{
+          <div className="hero-card-academics-inner" style={{
             position: "relative",
             zIndex: 3,
             padding: "22px 22px 32px 55px",
@@ -1003,13 +1007,13 @@ function Hero() {
 
             {/* Header Title with Custom Marker Highlighter Style */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "18px" }}>
-              <span style={{ 
-                background: "rgba(9, 132, 227, 0.15)", 
-                color: "#0984e3", 
-                fontSize: "11px", 
-                fontWeight: "900", 
-                padding: "4px 10px", 
-                borderRadius: "4px", 
+              <span style={{
+                background: "rgba(9, 132, 227, 0.15)",
+                color: "#0984e3",
+                fontSize: "11px",
+                fontWeight: "900",
+                padding: "4px 10px",
+                borderRadius: "4px",
                 textTransform: "uppercase",
                 letterSpacing: "1px",
                 fontFamily: "'Outfit', sans-serif",
@@ -1024,12 +1028,12 @@ function Hero() {
             {/* Timeline Wrapper */}
             <div style={{ display: "flex", flexDirection: "column", gap: "18px", position: "relative" }}>
               {/* Hand-Drawn Dashed Timeline Path */}
-              <div style={{ 
-                position: "absolute", 
-                left: "15px", 
-                top: "16px", 
-                bottom: "16px", 
-                width: "0px", 
+              <div style={{
+                position: "absolute",
+                left: "15px",
+                top: "16px",
+                bottom: "16px",
+                width: "0px",
                 borderLeft: "2.5px dashed #a4b0be",
                 zIndex: 1
               }} />
@@ -1055,17 +1059,17 @@ function Hero() {
                     <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
                   </svg>
                 </div>
-                
+
                 <div>
                   <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14.5px", fontWeight: "900", color: "#1D222E" }}>
                     Plaksha University
                   </div>
                   <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "11px", color: "#4b5563", marginTop: "4px", display: "flex", flexWrap: "wrap", gap: "5px", alignItems: "center" }}>
                     <span style={{ fontWeight: "700" }}>2024–present &middot;</span>
-                    <span style={{ 
+                    <span style={{
                       background: "rgba(254, 211, 48, 0.4)", // Yellow Highlighter Marker
-                      color: "#785f00", 
-                      padding: "1px 6px", 
+                      color: "#785f00",
+                      padding: "1px 6px",
                       borderRadius: "4px",
                       fontSize: "10px",
                       fontWeight: "800",
@@ -1098,17 +1102,17 @@ function Hero() {
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                 </div>
-                
+
                 <div>
                   <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14.5px", fontWeight: "900", color: "#1D222E" }}>
                     JCB School Shimla
                   </div>
                   <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "11px", color: "#4b5563", marginTop: "4px", display: "flex", flexWrap: "wrap", gap: "5px", alignItems: "center" }}>
                     <span style={{ fontWeight: "700" }}>Class XII &middot;</span>
-                    <span style={{ 
+                    <span style={{
                       background: "rgba(255, 118, 117, 0.25)", // Pink/Orange Highlighter Marker
-                      color: "#b33939", 
-                      padding: "1px 6px", 
+                      color: "#b33939",
+                      padding: "1px 6px",
                       borderRadius: "4px",
                       fontSize: "10px",
                       fontWeight: "800",
@@ -1188,7 +1192,7 @@ function Hero() {
       </div>
 
       {/* Floating Centered Slanting Live Ribbon */}
-      <div style={{
+      <div className="hero-marquee-ribbon" style={{
         width: "60%", // Keep 60% of the original width
         minWidth: "290px", // Responsive lower bound
         maxWidth: "720px", // Cozy upper bound
@@ -1236,7 +1240,7 @@ function Hero() {
         }}>
           {/* Two identical blocks map to ensure mathematically seamless loop */}
           {Array.from({ length: 2 }).map((_, blockIdx) => (
-            <div 
+            <div
               key={blockIdx}
               style={{
                 display: "flex",
@@ -1262,7 +1266,7 @@ function Hero() {
                   }}>
                     Currently studying Data Science, Economics & Business
                   </span>
-                  
+
                   {/* Flat neo-brutalist coral bullet separating sentences */}
                   <div style={{
                     width: "6px",
@@ -1318,6 +1322,76 @@ function Hero() {
         @keyframes ribbonScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+
+        /* Responsive Mobile Styles (Preserves Laptop View 100%) */
+        @media (max-width: 768px) {
+          .hero-section {
+            padding-top: 70px !important;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+          }
+          .hero-stage {
+            flex-direction: column !important;
+            gap: 28px !important;
+            margin-top: 15px !important;
+            padding: 0 10px !important;
+          }
+          .hero-center-col {
+            order: 1 !important; /* Main ID Card placed at top of mobile screen */
+            width: 100% !important;
+            max-width: 320px !important;
+          }
+          .hero-left-col {
+            order: 2 !important;
+            width: 100% !important;
+            max-width: 320px !important;
+            gap: 16px !important;
+          }
+          .hero-right-col {
+            order: 3 !important;
+            width: 100% !important;
+            max-width: 320px !important;
+            gap: 16px !important;
+          }
+          .hero-mail-wrapper {
+            margin-top: 16px !important;
+          }
+          .hero-linkedin-wrapper {
+            margin-top: 16px !important;
+          }
+          .hero-row2-grid {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 24px !important;
+            margin-top: 20px !important;
+            padding: 0 10px !important;
+          }
+          .hero-card-coords,
+          .hero-card-academics {
+            max-width: 100% !important;
+            width: 100% !important;
+            transform: none !important;
+          }
+          .hero-card-academics-inner {
+            padding: 20px 16px 28px 44px !important;
+          }
+          .hero-marquee-ribbon {
+            width: 92% !important;
+            transform: rotate(-1.5deg) !important;
+            margin: 24px auto 15px auto !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .hero-id-card {
+            width: 270px !important;
+            height: 440px !important;
+          }
+          .hero-portrait-box {
+            width: 220px !important;
+            height: 290px !important;
+          }
         }
       `}</style>
     </section>

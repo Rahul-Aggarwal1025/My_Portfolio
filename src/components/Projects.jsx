@@ -55,7 +55,7 @@ function ProjectCard({ project, onClick }) {
         <svg width="100%" height="60" viewBox="0 0 200 60" style={{ display: "block" }}>
           {/* Cozy Dial Arc */}
           <path d="M 35 48 A 30 30 0 0 1 95 48" fill="none" stroke="#1D222E" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="3 3" />
-          
+
           {/* Emojis along the sentiment arc */}
           <text x="25" y="48" fontFamily="'Outfit', sans-serif" fontSize="10" textAnchor="middle">🙁</text>
           <text x="65" y="16" fontFamily="'Outfit', sans-serif" fontSize="10" textAnchor="middle">😐</text>
@@ -80,7 +80,7 @@ function ProjectCard({ project, onClick }) {
           <rect x="130" y="42" width="10" height="6" fill="none" stroke="#1D222E" strokeWidth="1.2" />
           <rect x="145" y="32" width="10" height="16" fill="none" stroke="#1D222E" strokeWidth="1.2" />
           <rect x="160" y="22" width="10" height="26" fill="none" stroke="#1D222E" strokeWidth="1.2" />
-          
+
           <rect x="132" y="44" width="6" height="2" fill="#fdcb6e">
             <animate attributeName="height" values="2;4;1;3;2" dur="3s" repeatCount="indefinite" />
           </rect>
@@ -123,9 +123,9 @@ function ProjectCard({ project, onClick }) {
 
           {/* Sketchy Solar Irradiance Daily Wave Curve */}
           <line x1="70" y1="46" x2="185" y2="46" stroke="#1D222E" strokeWidth="1.5" strokeDasharray="3 3" />
-          
+
           <path d="M 70 46 Q 127 12 185 46" fill="none" stroke="#1D222E" strokeWidth="2" strokeLinecap="round" />
-          
+
           <circle r="3.5" fill="#00cec9" stroke="#1D222E" strokeWidth="1.5">
             <animateMotion
               path="M 70 46 Q 127 12 185 46"
@@ -170,7 +170,7 @@ function ProjectCard({ project, onClick }) {
           <path d="M 103 17 L 111 17 M 103 27 L 111 27 M 107 17 L 107 27" stroke="#1D222E" strokeWidth="1" fill="none">
             <animate attributeName="d" values="M 103 17 L 111 17 M 103 27 L 111 27 M 107 17 L 107 27; M 103 17 L 111 17 M 103 19 L 111 19 M 107 17 L 107 19; M 103 17 L 111 17 M 103 31 L 111 31 M 107 17 L 107 31; M 103 17 L 111 17 M 103 25 L 111 25 M 107 17 L 107 25; M 103 17 L 111 17 M 103 27 L 111 27 M 107 17 L 107 27" dur="3.5s" repeatCount="indefinite" />
           </path>
-          
+
           {/* Telemetry data info */}
           <text x="142" y="22" fontFamily="'JetBrains Mono', monospace" fontSize="6.5" fontWeight="900" fill="#1D222E">
             GAP DETECTED
@@ -309,7 +309,7 @@ function ProjectCard({ project, onClick }) {
           >
             {project.title}
           </h3>
-          
+
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",

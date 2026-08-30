@@ -13,11 +13,13 @@ const codeLines = [
   { n: "05", tokens: [{ t: "from", c: "#ff7675" }, { t: " sklearn.ensemble ", c: "#b2bec3" }, { t: "import", c: "#ff7675" }, { t: " RandomForestClassifier", c: "#55efc4" }] },
   { n: "06", tokens: [] },
   { n: "07", tokens: [{ t: "# skills and expertise", c: "#5E9C6E" }] },
-  { n: "08", tokens: [
-    { t: "stack", c: "#74b9ff" }, { t: " = [", c: "#b2bec3" },
-    { t: '"Python"', c: "#ffeaa7" }, { t: ", ", c: "#b2bec3" },
-    { t: '"SQL"', c: "#ffeaa7" }, { t: "]", c: "#b2bec3" },
-  ]},
+  {
+    n: "08", tokens: [
+      { t: "stack", c: "#74b9ff" }, { t: " = [", c: "#b2bec3" },
+      { t: '"Python"', c: "#ffeaa7" }, { t: ", ", c: "#b2bec3" },
+      { t: '"SQL"', c: "#ffeaa7" }, { t: "]", c: "#b2bec3" },
+    ]
+  },
   { n: "09", tokens: [] },
   { n: "10", tokens: [{ t: "def", c: "#ff7675" }, { t: " analyze_data(df):", c: "#74b9ff" }] },
   { n: "11", tokens: [{ t: "    # query DB", c: "#5E9C6E" }] },
@@ -47,9 +49,9 @@ const skillCategories = [
 
 /* ── Panel 3 data: proven soft skills ──────────────────────────────── */
 const humanSkills = [
-  { icon: "🗣️", skill: "Communication",  evidence: "Published in Morung Express",      chip: "Media · Press" },
-  { icon: "🔬", skill: "Research",        evidence: "15-page DEI report, multi-source", chip: "Academic · Policy" },
-  { icon: "⚡", skill: "Problem Solving", evidence: "#1 FinTech, 24 hr hackathon",        chip: "Competitive · FinTech" },
+  { icon: "🗣️", skill: "Communication", evidence: "Published in Morung Express", chip: "Media · Press" },
+  { icon: "🔬", skill: "Research", evidence: "15-page DEI report, multi-source", chip: "Academic · Policy" },
+  { icon: "⚡", skill: "Problem Solving", evidence: "#1 FinTech, 24 hr hackathon", chip: "Competitive · FinTech" },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════ */
@@ -226,7 +228,7 @@ function IDEPanel() {
                 fontWeight: isActive ? "bold" : "normal",
                 transition: "color 0.15s ease",
               }}>{line.n}</span>
-              
+
               {/* Tokens */}
               <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: "12px" }}>
                 {isCompleted && line.tokens.map((tok, j) => (
@@ -362,7 +364,7 @@ function SimpleListPanel() {
               {cat.skills.map((skill, skillIdx) => {
                 const key = `${catIdx}-${skillIdx}`;
                 const isHov = hoveredIdx === key;
-                
+
                 // Color assignments per row on hover
                 let hoverColor = "#74b9ff";
                 let hoverBg = "rgba(116, 185, 255, 0.12)";
@@ -483,14 +485,14 @@ function HumanPanel() {
           // Distinctive, personality-driven styles for each of the 3 soft skills on hover (Muted Softer Pastels)
           let rowBg = "transparent";
           let rowBorderLeft = "4px solid transparent";
-          
+
           let iconBg = "rgba(29,34,46,0.06)";
           let iconBorder = "1.5px solid rgba(29,34,46,0.10)";
           let iconTransform = "none";
           let iconColor = "inherit";
-          
+
           let skillColor = "#1D222E";
-          
+
           let chipBg = "rgba(29,34,46,0.06)";
           let chipColor = "rgba(29,34,46,0.4)";
           let chipBorder = "1px solid rgba(29,34,46,0.12)";

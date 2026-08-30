@@ -48,7 +48,6 @@ function App() {
       <PageDecorator />
       <Navbar />
       <Hero />
-      <CreativeBridge />
       <Skills />
       <Projects onProjectOpen={handleProjectOpen} />
       <Experience />

@@ -13,8 +13,16 @@ function Footer() {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/rahul-aggarwal-28a281321/" },
   ];
 
+  const handleNavClick = (e, href) => {
+    if (href === "#home") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer
+      className="footer-container"
       style={{
         background: "#1D222E",
         color: "#FAF6EE",
@@ -28,6 +36,7 @@ function Footer() {
     >
       {/* Upper Grid Row */}
       <div
+        className="footer-upper-grid"
         style={{
           maxWidth: "940px",
           margin: "0 auto",
@@ -39,19 +48,25 @@ function Footer() {
         }}
       >
         {/* Left Side: Brand Column */}
-        <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "8px" }}>
+        <div
+          className="footer-brand-col"
+          style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "8px" }}
+        >
           <h4
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{
               fontSize: "20px",
               fontWeight: "900",
               margin: 0,
               color: "#FAF6EE",
               letterSpacing: "-0.3px",
+              cursor: "pointer",
             }}
           >
             R<span style={{ color: "#a29bfe" }}>.</span>
           </h4>
           <p
+            className="footer-brand-desc"
             style={{
               fontSize: "13px",
               fontWeight: "500",
@@ -83,7 +98,7 @@ function Footer() {
         </div>
 
         {/* Right Side: Links Columns */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "48px" }}>
+        <div className="footer-links-grid" style={{ display: "flex", flexWrap: "wrap", gap: "48px" }}>
           {/* Navigation links */}
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <h5
@@ -102,6 +117,7 @@ function Footer() {
               <a
                 key={idx}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 style={{
                   fontSize: "13.5px",
                   fontWeight: "600",
@@ -154,6 +170,7 @@ function Footer() {
               href={resumePdf}
               target="_blank"
               rel="noopener noreferrer"
+              download="Rahul_Aggarwal_Resume.pdf"
               style={{
                 fontSize: "13.5px",
                 fontWeight: "600",
@@ -181,6 +198,7 @@ function Footer() {
 
       {/* Bottom Copyright and Disclaimer */}
       <div
+        className="footer-bottom-row"
         style={{
           maxWidth: "940px",
           margin: "0 auto",
@@ -196,9 +214,43 @@ function Footer() {
       >
         <span>© 2026 Rahul. Hand-crafted using React & Vite.</span>
         <span style={{ fontSize: "11px", fontStyle: "italic" }}>
-          No cookies, just good vibes and lots of caffine
+          No cookies, just good vibes and lots of caffeine
         </span>
       </div>
+
+      {/* Responsive Styles for Mobile */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-container {
+            padding: 40px 20px 28px !important;
+          }
+          .footer-upper-grid {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 28px !important;
+          }
+          .footer-brand-col {
+            flex: 1 1 100% !important;
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          .footer-brand-desc {
+            max-width: 100% !important;
+          }
+          .footer-links-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 24px !important;
+            width: 100% !important;
+          }
+          .footer-bottom-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+            text-align: left !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }
